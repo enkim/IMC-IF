@@ -10,7 +10,8 @@ HE_path = './1. Brightfield/3. HE/';
 % temporarily I used H&E path
 
 %%%%% need to update %%%%%%%%%%%%
-% insert : mask image path in HE_path   
+% 지금은 일단 mask path 가 없어서 그냥 HE_path 값으로 대체했습니다. 
+% mask image 경로를 나중에 넣어주면 됩니다. 
 HE_mask_path = HE_path; % H&E mask image directory (* need to update) 
 %%%%% need to update %%%%%%%%%%%%
 
@@ -36,6 +37,14 @@ IF_scan = 0.325; % umm/pxl
 %% image reading
 I_HE = imread(sprintf('%s%s',HE_path,HE_filename.name));
 I_HE_mask = imread(sprintf('%s%s',HE_mask_path,HE_mask_filename.name));
+
+%%%%% need to update %%%%%%%%%%%%
+% 이부분은 나중에 지워 주시면 됩니다. 현재는 mask image 가 없어서 H&E 로 사용하기 때문에
+% single channel image 로 넣도록 했습니다. 
+I_HE_mask = I_HE_mask(:,:,1);
+%%%%% need to update %%%%%%%%%%%%
+
+
 I_IF = imread(sprintf('%s%s',IF_path, IF_filename.name));
 
 
